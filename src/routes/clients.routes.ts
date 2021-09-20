@@ -1,24 +1,25 @@
 import { Router } from "express";
-import ProductRepository from "../repositories/ProductsRepository";
-import CreateProductServise from "../services/CreateProductServise";
 
-const productRouter = Router();
-const productRepository = new ProductRepository()
+import ClientRepository from "../repositories/ClientsRepository";
+import CreateClienteServise from "../services/CreateClienteServise";
 
-productRouter.get('/', (request, response) => {
-    response.json(productRepository.findAll())
+
+const clientRouter = Router();
+const clientRepository = new ClientRepository()
+
+clientRouter.get('/', (request, response) => {
+    response.json(clientRepository.findAll())
 })
 
-productRouter.post('/', (request, response) => {
+clientRouter.post('/', (request, response) => {
     try {
-        //chama o createProduct que vai encaminahr os dados para o repositório
-        const service = new CreateProductServise(productRepository)
-        const { byPrice, code, description, lovers, sellPrice, tag, id } = request.body;
-        const protuto = service.execute({ byPrice, code, description, lovers, sellPrice, tag, id })
-        response.status(201).json(protuto)
+        const service = new CreateClienteServise(clientRepository)
+        const { code, endereco, genero, idade, nome, telefone, id } = request.body;
+        const cliente = service.executeClient({ code, endereco, genero, idade, nome, telefone, id })
+        response.status(201).json(cliente)
     } catch (error) {
-        return response.status(400).json({ error:"Produto já cadastrado" })
+        return response.status(400).json({ error:"Cliente já cadastrado" })
     }
 })
 
-export default productRouter
+export default clientRouter

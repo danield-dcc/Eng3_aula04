@@ -18,6 +18,7 @@ productRouter.post('/', (request, response) => {
         const service = new CreateProductServise(productRepository)
         const { byPrice, code, description, lovers, sellPrice, tag, id } = request.body;
         const protuto = service.execute({ byPrice, code, description, lovers, sellPrice, tag, id })
+      //  const protuto = service.runCreatProduct(byPrice, code, description, lovers, sellPrice, tag, id)
         response.status(201).json(protuto)
     } catch (error) {
         return response.status(400).json({ error: "Produto já cadastrado" })

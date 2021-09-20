@@ -18,25 +18,26 @@ export default class ProductRepository {
         return this.products
     }
 
-    public checkIndex(code:number):number{
-        let indice = this.products.map(value => {
-            return value.code
-        }).indexOf(code)
+    // public checkIndex(code: number): number {
+    //     let indice = this.products.map(value => {
+    //         return value.code
+    //     }).indexOf(code)
 
-       return indice
-    }
+    //     return indice
+    // }
 
     public deleteByCode(code: number): Array<Product> {
 
         let indice = this.products.map(value => {
             return value.code
         }).indexOf(code)
-        if(indice == -1){
-        }
+        // if (indice == -1) {
+        // }
 
+        //const deleteProduct = this.products.slice(indice, 1)
         this.products.splice(indice, 1)
 
-        console.log(this.products)
+        //console.log(this.products)
 
         return this.products
     }

@@ -28,4 +28,27 @@ export default class CreatProduct {
             return p
         }
     }
+
+
+    // public runCreatProduct(code: number, description: string, byPrice: number, lovers: number, sellPrice: number, tag: Array<Product>, id:number): any {
+    //     const product = this.repository.findByCode(code)
+    //     if (product) {
+    //         throw Error("Produto já cadastrado")
+    //     } else {
+    //         const p = new Product({
+    //             byPrice,
+    //             code,
+    //             description,
+    //             lovers,
+    //             sellPrice,
+    //             tag,
+                
+
+    //         })
+    //         this.repository.save(p)
+    //         return p
+    //     }
+    // }
+
 }
+

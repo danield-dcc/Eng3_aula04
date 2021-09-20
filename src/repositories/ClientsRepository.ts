@@ -1,29 +1,27 @@
-import Product from "../models/Product";
+import Client from "../models/Client";
 
-export default class ProductRepository {
+export default class ClientRepository {
     //salvando os elementos como um Array
-    products: Array<Product>;
+    clients: Array<Client>;
 
     constructor() {
-        this.products = []
+        this.clients = []
     }
 
-    public findByCode(code:number):Product | undefined {
-        return this.products.find(v => v.code == code)
+    public findByCode(code: number): Client | undefined {
+        return this.clients.find(v => v.code == code)
     }
 
-    public findAll(): Array<Product> {
-        return this.products
+    public findAll(): Array<Client> {
+        return this.clients
     }
 
     //recebe atráves de uma desestruturação
-    public save({ byPrice, code, description, lovers, sellPrice, tag }: Product): Product {
-        
-        const product = new Product({byPrice, code, description, lovers, sellPrice, tag})
-        
-        this.products.push(product)
+    public save({ code, endereco, genero, idade, nome, telefone }: Client): Client {
 
-        return product
+        const client = new Client({ code, endereco, genero, idade, nome, telefone })
+        this.clients.push(client)
+        return client
     }
-    
+
 }
